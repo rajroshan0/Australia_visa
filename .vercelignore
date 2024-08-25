@@ -1,0 +1,21 @@
+# Ignore node_modules (not needed on Vercel, as it installs dependencies)
+node_modules/
+
+# Ignore environment variables file (not needed on Vercel, as you set them in the Vercel dashboard)
+.env
+
+# Ignore build output directories (if they are built during deployment)
+output/
+
+# Ignore local logs
+logs/
+*.log
+
+# Ignore development files (if they are not needed in production)
+*.tmp
+*.swp
+*.DS_Store
+
+# Ignore IDE/editor-specific files (if needed)
+.vscode/
+.idea/

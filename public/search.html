@@ -1,0 +1,422 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Search Visa Holder</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Basic styling for the visa information page */
+        .visa-info {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            padding: 20px;
+            border: 1px solid #ddd;
+        }
+        .header img {
+            max-width: 100px;
+            display: block;
+            margin-bottom: 20px;
+        }
+        .section {
+            margin-bottom: 20px;
+        }
+        .row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 10px;
+        }
+        .label {
+            font-weight: bold;
+        }
+        .useful-links {
+            background-color: #e0e0e0; /* Match the background color from the PDF */
+            padding: 10px;
+        }
+        .useful-links a {
+            color: #0000ee; /* Blue colored links */
+            text-decoration: none;
+        }
+        .footer {
+            margin-top: 30px;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <img src="./logo/logo.png" alt="Australian Government Department of Home Affairs">
+        <h1>VEVO for Visa Holders</h1>
+    </div>
+    
+    <div class="container">
+        <h3>Visa holder enquiry</h3>
+<h3>Search Visa Holder</h3>
+<form id="searchForm">
+    <div class="form-group">
+        <label for="searchDocumentNumber">Document Number:</label>
+        <input type="text" id="searchDocumentNumber" name="documentNumber" required>
+    </div>
+    <div class="btn-group">
+        <button type="submit">Search</button>
+    </div>
+</form>
+
+<div id="result"></div>
+
+<!-- <script>
+
+    document.getElementById('searchForm').addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const documentNumber = document.getElementById('searchDocumentNumber').value;
+        const response = await fetch(`/search?documentNumber=${encodeURIComponent(documentNumber)}`);
+        const data = await response.json();
+
+        const resultDiv = document.getElementById('result');
+        if (response.ok) {
+            resultDiv.innerHTML = `
+                <h4>Visa Holder Information:</h4>
+                <p><strong>Document Type:</strong> ${data.documentType}</p>
+                <p><strong>Document Number:</strong> ${data.documentNumber}</p>
+                <p><strong>Grant Number:</strong> ${data.grantNumber}</p>
+                <p><strong>Reference Type:</strong> ${data.referenceType}</p>
+                <p><strong>Date of Birth:</strong> ${new Date(data.dob).toDateString()}</p>
+                <p><strong>Nationality:</strong> ${data.nationality}</p>
+                <p><strong>Country:</strong> ${data.country}</p>
+            `;
+        } else {
+            resultDiv.innerHTML = `<p>${data.error}</p>`;
+        }
+    });
+</script> -->
+
+ 
+<!-- <script>
+    document.getElementById('searchForm').addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const documentNumber = document.getElementById('searchDocumentNumber').value;
+        const response = await fetch(`/search?documentNumber=${encodeURIComponent(documentNumber)}`);
+        const data = await response.json();
+
+        const resultDiv = document.getElementById('result');
+        if (response.ok) {
+            resultDiv.innerHTML = `
+                <div class="visa-info">
+                    <div class="header">
+                        <h4 class="title">Visa Holder Information</h4>
+                    </div>
+                    <div class="section">
+                       
+                        <h5>Personal Information</h5>
+                        <div class="row">
+                            <span class="label">Document Type:</span>
+                            <span class="value">${data.documentType || ''}</span>
+                        </div>
+                        <div class="row">
+                            <span class="label">Document Number:</span>
+                            <span class="value">${data.documentNumber || ''}</span>
+                        </div>
+                        <div class="row">
+                            <span class="label">Grant Number:</span>
+                            <span class="value">${data.grantNumber || ''}</span>
+                        </div>
+                        <div class="row">
+                            <span class="label">Reference Type:</span>
+                            <span class="value">${data.referenceType || ''}</span>
+                        </div>
+                        <div class="row">
+                            <span class="label">Date of Birth:</span>
+                            <span class="value">${data.dob ? new Date(data.dob).toDateString() : ''}</span>
+                        </div>
+                        <div class="row">
+                            <span class="label">Nationality:</span>
+                            <span class="value">${data.nationality || ''}</span>
+                        </div>
+                        <div class="row">
+                            <span class="label">Country:</span>
+                            <span class="value">${data.country || ''}</span>
+                        </div>
+
+                        <h5>Visa Details</h5>
+                        <div class="row">
+                            <span class="label">Visa Subclass Name:</span>
+                            <span class="value">${data.visaSubclassName || ''}</span>
+                        </div>
+                        <div class="row">
+                            <span class="label">Visa Subclass Number:</span>
+                            <span class="value">${data.visaSubclassNumber || ''}</span>
+                        </div>
+                        <div class="row">
+                            <span class="label">Visa Grant Date:</span>
+                            <span class="value">${data.visaGrantDate ? new Date(data.visaGrantDate).toDateString() : ''}</span>
+                        </div>
+                        <div class="row">
+                            <span class="label">Visa Expiry Date:</span>
+                            <span class="value">${data.visaExpiryDate ? new Date(data.visaExpiryDate).toDateString() : ''}</span>
+                        </div>
+                        <div class="row">
+                            <span class="label">Visa Conditions:</span>
+                            <span class="value">${data.visaConditions || ''}</span>
+                        </div>
+
+                        
+                        <h5>Visa Holder Information</h5>
+                        <div class="row">
+                            <span class="label">Surname:</span>
+                            <span class="value">${data.surname || ''}</span>
+                        </div>
+                        <div class="row">
+                            <span class="label">Given Names:</span>
+                            <span class="value">${data.givenNames || ''}</span>
+                        </div>
+                        <div class="row">
+                            <span class="label">Sex:</span>
+                            <span class="value">${data.sex || ''}</span>
+                        </div>
+                        <div class="row">
+                            <span class="label">Country of Birth:</span>
+                            <span class="value">${data.countryOfBirth || ''}</span>
+                        </div>
+                        <div class="row">
+                            <span class="label">Passport Number:</span>
+                            <span class="value">${data.passportNumber || ''}</span>
+                        </div>
+                        <div class="row">
+                            <span class="label">Passport Country:</span>
+                            <span class="value">${data.passportCountry || ''}</span>
+                        </div>
+ 
+                        <h5>Useful Links</h5>
+                        <div class="row">
+                            <span class="label">Useful Link 1:</span>
+                            <span class="value"><a href="${data.usefulLink1 || '#'}">${data.usefulLink1 || ''}</a></span>
+                        </div>
+                        <div class="row">
+                            <span class="label">Useful Link 2:</span>
+                            <span class="value"><a href="${data.usefulLink2 || '#'}">${data.usefulLink2 || ''}</a></span>
+                        </div>
+                    </div>
+                </div>
+            `;
+        } else {
+            resultDiv.innerHTML = `<p>${data.error}</p>`;
+        }
+    });
+</script>  -->
+ <!-- this commented part show the form page  -->
+ 
+
+
+  <!-- <script>
+    document.getElementById('searchForm').addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const documentNumber = document.getElementById('searchDocumentNumber').value;
+        const response = await fetch(`/search?documentNumber=${encodeURIComponent(documentNumber)}`);
+        const data = await response.json();
+
+        const resultDiv = document.getElementById('result');
+        if (response.ok) {
+            resultDiv.innerHTML = `
+                <div class="visa-info">
+                    <div class="header">
+                        <img src="./logo/logo.png" alt="Australian Government Logo">
+                        <h4>Australian Government - Department of Home Affairs</h4>
+                    </div>
+                    <h5>Personal Information</h5>
+                        <div class="row">
+                            <span class="label">Document Type:</span>
+                            <span class="value">${data.documentType || ''}</span>
+                        </div>
+                        <div class="row">
+                            <span class="label">Document Number:</span>
+                            <span class="value">${data.documentNumber || ''}</span>
+                        </div>
+                        <div class="row">
+                            <span class="label">Grant Number:</span>
+                            <span class="value">${data.grantNumber || ''}</span>
+                        </div>
+                        <div class="row">
+                            <span class="label">Reference Type:</span>
+                            <span class="value">${data.referenceType || ''}</span>
+                        </div>
+                        <div class="row">
+                            <span class="label">Date of Birth:</span>
+                            <span class="value">${data.dob ? new Date(data.dob).toDateString() : ''}</span>
+                        </div>
+                        <div class="row">
+                            <span class="label">Nationality:</span>
+                            <span class="value">${data.nationality || ''}</span>
+                        </div>
+                        <div class="row">
+                            <span class="label">Country:</span>
+                            <span class="value">${data.country || ''}</span>
+                        </div>
+
+                    <div class="section">
+                        <h5>Application Status</h5>
+                        <div class="row">
+                            <span class="label">Visa Subclass:</span>
+                            <span class="value">${data.visaSubclassName || ''}</span>
+                        </div>
+                        <div class="row">
+                            <span class="label">Status:</span>
+                            <span class="value">Granted</span>
+                        </div>
+                    </div>
+                    <div class="section">
+                        <h5>Visa Duration and Travel</h5>
+                        <div class="row">
+                            <span class="label">Date of Grant:</span>
+                            <span class="value">${data.visaGrantDate ? new Date(data.visaGrantDate).toDateString() : ''}</span>
+                        </div>
+                        <div class="row">
+                            <span class="label">Must not arrive after:</span>
+                            <span class="value">${data.mustNotArriveAfter ? new Date(data.mustNotArriveAfter).toDateString() : ''}</span>
+                        </div>
+                        <div class="row">
+                            <span class="label">Length of Stay:</span>
+                            <span class="value">${data.lengthOfStay || ''} months</span>
+                        </div>
+                        <div class="row">
+                            <span class="label">Travel:</span>
+                            <span class="value">Multiple entries</span>
+                        </div>
+                    </div>
+                    <div class="section">
+                        <h5>Visa Conditions</h5>
+                        <div class="row">
+                            <span class="label">Condition 8101:</span>
+                            <span class="value">No work</span>
+                        </div>
+                        <div class="row">
+                            <span class="label">Condition 8201:</span>
+                            <span class="value">Maximum three months study</span>
+                        </div>
+                    </div>
+                    <div class="section">
+                        <h5>Visa Holder Information</h5>
+                        <div class="row">
+                            <span class="label">Surname:</span>
+                            <span class="value">${data.surname || ''}</span>
+                        </div>
+                        <div class="row">
+                            <span class="label">Given Names:</span>
+                            <span class="value">${data.givenNames || ''}</span>
+                        </div>
+                        <div class="row">
+                            <span class="label">Sex:</span>
+                            <span class="value">${data.sex || ''}</span>
+                        </div>
+                        <div class="row">
+                            <span class="label">Country of Birth:</span>
+                            <span class="value">${data.countryOfBirth || ''}</span>
+                        </div>
+                        <div class="row">
+                            <span class="label">Passport Number:</span>
+                            <span class="value">${data.passportNumber || ''}</span>
+                        </div>
+                        <div class="row">
+                            <span class="label">Passport Country:</span>
+                            <span class="value">${data.passportCountry || ''}</span>
+                        </div>
+                    </div>
+                
+                <div class="section">
+    <h5>Why Keep this Notice?</h5>
+    <ul>
+        <li>Airlines might ask for details in this notice so they can carry out checks to allow you to board the plane.</li>
+        <li>To access your visa record in VEVO.</li>
+    </ul>
+
+    <h5>Visitor (subclass 600) visa conditions</h5>
+    </h5>No work (visa condition 8101)</h5>: This condition means that you must not work while you are in Australia.</p>
+    </h5><p>Maximum three months study (visa condition 8201)</h5>: This condition means that you are only allowed to engage in up to but not exceeding three months of study or training while you are in Australia.</p>
+    <p>Information pack on domestic and family violence, sexual assault, and forced marriage: The Australian Government has developed a family safety pack with information on Australia's laws regarding domestic and family violence, sexual assault, and forced marriage. The family safety pack also includes important information about essential services and emergency contacts in Australia. This information can be found at www.dss.gov.au/familysafetypack</p>
+    <p>Character requirements: Entering or remaining in Australia is a privilege. You must obey the law and not engage in criminal activity.</p>
+    <p>More information: immi.homeaffairs.gov.au/help-support/meeting-our-requirements/character</p>
+    <p>Update us: You are required to tell us about any changes to your details as soon as possible. These changes may include your name, passport, contact details, address, or family members. If you do not notify us of your new details, this can have serious consequences for you.</p>
+    <h5><p>Useful links:</p></h5>
+    <ul>
+        <li>Check your visa details in VEVO: www.homeaffairs.gov.au/vevo</li>
+        <li>Update your details in ImmiAccount: www.homeaffairs.gov.au/immiaccount</li>
+        <li>Learn about family safety: www.dss.gov.au/family-safety-pack</li>
+        <li>Update your details (including passport or if you have a baby): immi.homeaffairs.gov.au/change-in-situation</li>
+        <li>More information: www.homeaffairs.gov.au</li>
+    </ul>
+    <p>Yours sincerely</p>
+    <p>Position number: 891167</p>
+    <p>Department of Home Affairs</p>
+    <p>Sent to: flywingtravel@gmail.com</p>
+    <p>Sent on: 03 May 2024</p>
+</div>
+
+            `;
+        } else {
+            resultDiv.innerHTML = `<p>${data.error}</p>`;
+        }
+    });
+</script>  -->
+
+
+<!-- <script>
+    document.getElementById('searchForm').addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const documentNumber = document.getElementById('searchDocumentNumber').value;
+        const response = await fetch(`/search?documentNumber=${encodeURIComponent(documentNumber)}`);
+        const data = await response.json();
+
+        const resultDiv = document.getElementById('result');
+        if (response.ok && data.success) {
+            const pdfUrl = data.url;
+            resultDiv.innerHTML = `
+                <p>Certificate generated successfully!</p>
+                <a href="${pdfUrl}" target="_blank">Download PDF</a>
+            `;
+        } else {
+            resultDiv.innerHTML = `<p>${data.error || 'Error generating the certificate.'}</p>`;
+        }
+    });
+</script>
+
+<script>
+    if (response.ok && data.success) {
+    const pdfUrl = data.url;
+    resultDiv.innerHTML = `
+        <p>Certificate generated successfully!</p>
+        <a href="${pdfUrl}" target="_blank">Download PDF</a>
+    `;
+} else {
+    resultDiv.innerHTML = `<p>${data.error || 'Error generating the certificate.'}</p>`;
+}
+
+</script> -->
+
+<script>
+    document.getElementById('searchForm').addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        const documentNumber = document.getElementById('searchDocumentNumber').value;
+        const response = await fetch(`/search?documentNumber=${encodeURIComponent(documentNumber)}`);
+        const data = await response.json();
+
+        const resultDiv = document.getElementById('result');
+        if (response.ok && data.success) {
+            const pdfUrl = data.url;
+            resultDiv.innerHTML = `
+                <p>Visa found Successfully! <br>
+                     Click here to download your visa</p>
+                <a href="${pdfUrl}" target="_blank">Download PDF</a>
+            `;
+        } else {
+            resultDiv.innerHTML = `<p>${data.error || 'Error generating the certificate.'}</p>`;
+        }
+    });
+</script>
+
+
+</body>
+</html>

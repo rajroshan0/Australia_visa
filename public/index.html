@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="styles.css">
+<title>VEVO for Visa Holders</title>
+ 
+<style>
+/* body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  } */
+
+  /* .header {
+    background-color: #002147;
+    color: white;
+    padding: 20px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  } */
+
+  .header img {
+    height: 90px;
+  }
+
+  .header h1{
+    font-size: larger;
+  }
+
+  .container {
+    padding: 0px;
+  }
+
+  .main-content {
+    background-color: white;
+    padding: 20px;
+    border: 1px solid #cccccc;
+  }
+
+  /* .footer {
+    background-color: #b0b0b0;
+    padding: 15px;
+    text-align: center;
+  } */
+
+  .footer a {
+    margin-right: 15px;
+  }
+  /* .container .main-content a{
+    background-color: #1161d9;
+    width: 100%;
+    height: 8px;
+  } */
+
+        
+  h2 {
+    background-color: #1161d9;
+    color: white;
+    padding: 10px;
+    height: 22px;
+    background-color: #002147;
+    color: white;
+    padding: px;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+/* 
+  label {
+    display: block;
+    margin-bottom: 10px;
+  } */
+
+  select {  
+    display: flex;
+    align-items:center;
+    width: 25%;
+    height: 40%;
+    margin-left: 24%;
+
+  }
+
+  
+  form{
+    display: flex;
+    align-items:center;
+    padding: 15px;
+   
+  }
+  
+  
+  .buttons {
+    display: flex;
+    justify-content: space-between;
+    background-color: #ccc;
+    border: #002147;
+    
+  }
+
+  .buttons button {
+    margin-right: 10px;
+    padding: 10px 20px;
+    border: 1px solid #ccc;
+    background-color: white;
+  }
+  .visa{
+    background-color: #092243;
+    padding: 2px;
+    color:white;
+
+  }
+
+ 
+
+  /*mobile responsive*/
+
+  @media (max-width: 768px) {
+    .header {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    .header img {
+      height: 60px;
+    }
+  
+    .main-content {
+      padding: 10px;
+    }
+  
+    h2 {
+      flex-direction: column;
+      text-align: center;
+    }
+  
+    select {
+      width: 80%;
+      margin-left: 10%;
+    }
+  
+    form {
+      flex-direction: column;
+      align-items: stretch;
+      padding: 10px;
+    }
+  
+    .buttons {
+      flex-direction: column;
+      align-items: center;
+    }
+  
+    .buttons button {
+      margin: 5px 0;
+      width: 80%;
+    }
+  }
+</style>
+<!-- <script>
+    function goToPage(select) {
+        var value = select.value;
+        if (value) {
+            window.location.href = value;
+        }
+    }
+</script> -->
+</head>
+<body>
+
+<div class="header">
+  <div>
+    <img src="logo/logo.png" alt="Australian Government Department of Home Affairs">
+  </div>
+  <div style="flex-grow: 1;">
+    <h1>VEVO for Visa Holders Australia</h1>
+  </div>
+  <div>
+    <a href="passport.html">Help</a>
+  </div>
+</div>
+
+<div class="container">
+  <div class="main-content"> 
+    <div class="visa">
+       <h2>Visa holder enquiry</h2>
+    </div>
+    
+    <p>Please complete the following details to view your visa entitlements.<br>Fields marked <span style="color: red;">*</span> must be completed.</p>
+    
+    <form>
+      <label for="document-type">Document type <span style="color: red;">*</span></label>
+      <!-- <select id="document-type" name="document-type">
+        <a href="passport.html"></a> <option value="">DFTA</option></a>
+        <option value="">ImmiCard</option>
+        <option value="">Passport</option>
+        <a href="passport.html"><option value="">Passport</option></a>
+            
+        <!-- Add options here -->
+      <!-- </select> --> 
+      <select id="document-type" name="document-type" onchange="goToPage(this)">
+        <option value="">Select Document</option>
+        <option value="dfta.html">DFTA</option>
+        <option value="immicard.html">ImmiCard</option>
+        <option value="passport.html">Passport</option>
+    </select>
+  </form>
+      <div class="buttons">
+        <button type="reset">Clear</button>
+        <button type="submit">Submit</button>
+      </div>
+    
+  </div>
+</div>
+
+<div class="footer">
+  <a href="#">Accessibility</a> |
+  <a href="#">Online Security</a> |
+  <a href="#">Privacy</a> |
+  <a href="#">Copyright & Disclaimer</a> |
+  <a href="#">Change Password</a>
+</div>
+
+
+<script src="script.js"></script>
+</body>
+</html>

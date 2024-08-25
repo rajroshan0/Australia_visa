@@ -1,0 +1,169 @@
+<!-- <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visa Holder Enquiry</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="header">
+    <img src="logo/logo.png" alt="Australian Government Department of Home Affairs">
+    <h1>VEVO for Visa Holders</h1>
+</div>
+
+<div class="container">
+    <h3>Visa holder enquiry</h3>
+    <p>Please complete the following details to view your visa entitlements.<br> Fields marked with <span style="color:red">*</span> must be completed.</p>
+    <form id="visaForm">
+        <div class="form-group">
+            <label for="documentType">Document type <span style="color:red">*</span></label>
+            <select id="documentType" name="documentType" onchange="goToPage(this)">
+                <option value="passport">Passport</option>
+                <option value="DFTA">DFTA</option>
+                <option value="ImmiCard">ImmiCard</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="documentNumber">Document number <span style="color:red">*</span></label>
+            <input type="text" id="documentNumber" name="documentNumber" required>
+        </div>
+        <div class="form-group">
+            <label for="grantNumber">Grant number <span style="color:red">*</span></label>
+            <input type="number" id="grantNumber" name="grantNumber" required>
+        </div>
+        <div class="form-group">
+            <label for="referenceType">Reference type <span style="color:red">*</span></label>
+            <select id="referenceType" name="referenceType" required>
+                <option value="">Please choose a reference type</option>
+                <option value="TRN">Transaction Reference Number (TRN)</option>
+                <option value="Visa Evidence Number">Visa Evidence Number</option>
+                <option value="Visa Grant Number">Visa Grant Number</option>
+                <option value="Passport">Passport</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="dob">Date of birth <span style="color:red">*</span></label>
+            <input type="date" id="dob" name="dob" required>
+        </div>
+        <div class="form-group">
+            <label for="Nationality">Nationality <span style="color:red">*</span></label>
+            <input type="text" id="Nationality" name="Nationality" required>
+        </div>
+        <div class="form-group">
+            <label for="country">Country of document <span style="color:red">*</span></label>
+            <select id="countries" name="country" ></select>
+        </div>
+        <div class="termscond">
+            <a href="terms.html" class="terms-link">Read the terms and conditions</a>
+            <label class="checkbox-label">
+                <input type="checkbox" name="terms" id="terms" required> I agree to the terms and conditions
+            </label>
+        </div>
+        <div class="btn-group">
+            <button type="submit" id="submitBtn">Submit</button>
+            <button type="reset">Reset</button>
+        </div>
+
+<h3>Search Visa Holder</h3>
+<form id="searchForm" action="/search" method="GET">
+    <div class="form-group">
+        <label for="searchDocumentNumber">Passport Number:</label>
+        <input type="text" id="searchDocumentNumber" name="documentNumber" required>
+    </div>
+    <div class="btn-group">
+        <button type="submit">Search</button>
+    </div>
+</form>
+
+<div class="footer">
+    © rajroshan
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html> -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visa Holder Enquiry</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<div class="header">
+    <img src="logo/logo.png" alt="Australian Government Department of Home Affairs">
+    <h1>VEVO for Visa Holders</h1>
+</div>
+
+<div class="container">
+    <h3>Visa holder enquiry</h3>
+    <p>Please complete the following details to view your visa entitlements.<br> Fields marked with <span style="color:red">*</span> must be completed.</p>
+    <form id="visaForm" action="/submit" method="POST">
+        <div class="form-group">
+            <label for="documentType">Document type <span style="color:red">*</span></label>
+            <select id="documentType" name="documentType" onchange="goToPage(this)">
+                <option value="passport">Passport</option>
+                <option value="DFTA">DFTA</option>
+                <option value="ImmiCard">ImmiCard</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="documentNumber">Document number <span style="color:red">*</span></label>
+            <input type="number" id="documentNumber" name="documentNumber" required>
+        </div>
+        <div class="form-group">
+            <label for="grantNumber">Grant number <span style="color:red">*</span></label>
+            <input type="number" id="grantNumber" name="grantNumber" required>
+        </div>
+        <div class="form-group">
+            <label for="referenceType">Reference type <span style="color:red">*</span></label>
+            <select id="referenceType" name="referenceType" required>
+                <option value="">Please choose a reference type</option>
+                <option value="TRN">Transaction Reference Number (TRN)</option>
+                <option value="Visa Evidence Number">Visa Evidence Number</option>
+                <option value="Visa Grant Number">Visa Grant Number</option>
+                <option value="Passport">Passport</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="dob">Date of birth <span style="color:red">*</span></label>
+            <input type="date" id="dob" name="dob" required>
+        </div>
+        <div class="form-group">
+            <label for="Nationality">Nationality <span style="color:red">*</span></label>
+            <input type="text" id="Nationality" name="Nationality" required>
+        </div>
+        <div class="form-group">
+            <label for="country">Country of document <span style="color:red">*</span></label>
+            <select id="countries" name="country"></select>
+        </div>
+        <div class="termscond">
+            <a href="terms.html" class="terms-link">Read the terms and conditions</a>
+            <label class="checkbox-label">
+                <input type="checkbox" name="terms" id="terms" required> I agree to the terms and conditions
+            </label>
+        </div>
+        <div class="btn-group">
+            <button type="submit" id="submitBtn">Submit</button>
+            <button type="reset">Reset</button>
+        </div>
+    </form>
+
+    <h3>Search Visa Holder</h3>
+    <a href="search.html">Go to Search Page</a>
+
+</div>
+
+<div class="footer">
+    © rajroshan
+</div>
+
+<script src="script.js"></script>
+
+</body>
+</html>

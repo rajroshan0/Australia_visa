@@ -1,0 +1,242 @@
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #f1f1f1;
+}
+.header {
+    background-color: #082243;
+    color: white;
+    padding: 15px;
+    text-align: left;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.header img {
+    height: 50px;
+}
+.header h1 {
+    margin: 0;
+    font-size: 16px;
+}
+.container {
+    max-width: 100%;
+    margin: 30px 20px;
+    background-color: white;
+    padding: 20px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+.container h3 {
+    background-color: #092243;
+    color: white;
+    padding: 7px;
+}
+.form-group {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+.form-group label {
+    flex: 1;
+    margin-right: 10px;
+    display: inline-block;
+}
+.form-group input, .form-group select {
+    flex: 2;
+    padding: 8px;
+    box-sizing: border-box;
+    display: inline-block;
+    width: 1%;
+}
+.termscond {
+    margin-left: 34%;
+    margin-top: 20px;
+}
+.form-group .checkbox-label {
+    display: inline-block;
+    margin-right: 5px;
+}
+.btn-group {
+    display: flex;
+    justify-content: space-between;
+}
+.btn-group button {
+    padding: 10px 20px;
+    background-color: #003366;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+.btn-group button:disabled {
+    background-color: #cccccc;
+}
+.terms-link {
+    display: block;
+    margin-bottom: 10px;
+    color: blue;
+    text-decoration: underline;
+    cursor: pointer;
+}
+.footer {
+    text-align: center;
+    border-top: 1px solid #cccccc;
+    padding: 10px 0;
+    background-color: #e0e0e0;
+}
+
+
+/* mobile responsive */
+
+@media (max-width: 768px) {
+    .header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .header h1 {
+        font-size: 14px;
+    }
+
+    .container {
+        margin: 20px 10px;
+        padding: 15px;
+    }
+
+    .form-group {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .form-group label,
+    .form-group input,
+    .form-group select {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .termscond {
+        margin-left: 0;
+        text-align: center;
+    }
+
+    .btn-group {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn-group button {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    .terms-link {
+        text-align: center;
+    }
+}
+
+
+/*mobile responsive */
+
+
+@media (max-width: 480px) {
+    .header img {
+        height: 40px;
+    }
+
+    .header h1 {
+        font-size: 12px;
+    }
+
+    .container {
+        margin: 10px 5px;
+        padding: 10px;
+    }
+
+    .form-group label,
+    .form-group input,
+    .form-group select {
+        margin-bottom: 8px;
+    }
+
+    .termscond {
+        margin-top: 15px;
+    }
+
+    .btn-group button {
+        padding: 8px 15px;
+    }
+}
+
+
+
+/* 
+//this style is for the search page  */
+
+/* General styling */
+.visa-info {
+    font-family: Arial, sans-serif;
+    color: #333;
+    background-color: #fff;
+    padding: 20px;
+    border: 2px solid #000;
+    border-radius: 8px;
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.header {
+    text-align: center;
+    border-bottom: 2px solid #000;
+    padding-bottom: 10px;
+    margin-bottom: 20px;
+}
+
+.title {
+    font-size: 22px;
+    font-weight: bold;
+    color: #000;
+}
+
+.section {
+    display: block;
+    padding-bottom: 20px;
+}
+
+h5 {
+    font-size: 18px;
+    font-weight: bold;
+    color: #000;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.row {
+    display: flex;
+    justify-content: space-between;
+    padding: 5px 0;
+}
+
+.label {
+    font-weight: bold;
+    color: #555;
+    text-align: right;
+    padding-right: 10px;
+    width: 40%;
+}
+
+.value {
+    color: #000;
+    text-align: left;
+    width: 60%;
+    border-bottom: 1px solid #ccc;
+    padding-left: 10px;
+}
+
+a {
+    color: #0066cc;
+    text-decoration: none;
+}
+a:hover {
+    text-decoration: underline;
+}

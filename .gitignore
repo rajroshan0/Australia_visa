@@ -1,0 +1,21 @@
+# Node modules
+node_modules/
+
+# Environment variables
+.env
+
+# Build output
+output/
+
+# Logs
+logs/
+*.log
+
+# Other ignored files and directories
+*.tmp
+*.swp
+*.DS_Store
+
+# Ignore IDE/editor-specific files (if needed)
+.vscode/
+.idea/
