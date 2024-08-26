@@ -8,7 +8,29 @@ const bodyParser = require('body-parser');
 const fs = require('fs');
 const path = require('path');
 
-const app = express();
+
+const app = express(); // Make sure to initialize Express before using it
+
+// Serve static files from the public directory
+app.use(express.static(path.join(__dirname, '..', 'public')));
+
+// Serve the HTML files
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'public', 'submit.html'));  // Update to your default HTML file
+});
+
+app.get('/passport', (req, res) => {
+    res.sendFile(path.join(__dirname, '..', 'public', 'index.html'));
+});
+
+// Serve the certificate-template.pdf at the /download-certificate URL
+app.get('/download-certificate', (req, res) => {
+    const filePath = path.join(__dirname, '..', 'public', 'templates', 'certificate-template.pdf');
+    res.sendFile(filePath);
+});
+
+
+
 
 
 const { PDFDocument, rgb } = require('pdf-lib'); // Import PDF-lib
@@ -48,7 +70,7 @@ const Visa = mongoose.model('Visa', visaSchema);
 
 // Serve the form page
 app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, '..', 'public', 'passport.html'));
 });
 
 
@@ -398,7 +420,7 @@ app.get('/search', async (req, res) => {
 
         // Load the existing PDF template
         // const templatePath = path.join(__dirname, 'templates', 'certificate-template.pdf');
-        const templatePath = path.join(__dirname, 'public', 'templates', 'certificate-template.pdf');
+        const templatePath = path.join(__dirname,'..', 'public', 'templates', 'certificate-template.pdf');
         
         const pdfDoc = await PDFDocument.load(fs.readFileSync(templatePath));
         const page = pdfDoc.getPages()[0];
